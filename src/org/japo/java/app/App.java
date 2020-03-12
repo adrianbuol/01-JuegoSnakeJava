@@ -26,6 +26,13 @@ public final class App {
     
     public App(){
         System.out.println("Game made by adrianbuol");
+        System.out.printf("%n¡Gracias por jugar!%n");
+        System.out.printf("%nControles:%n");
+        System.out.println("Arriba    - UP");
+        System.out.println("Abajo     - DOWN");
+        System.out.println("Derecha   - RIGHT");
+        System.out.println("Izquierda - LEFT");
+        System.out.println("Para salir del juego pulsa ESC.");
     }
     
     public final void launchApp() {

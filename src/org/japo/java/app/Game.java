@@ -110,7 +110,6 @@ public class Game {
 //            JLabel label = new JLabel("Game Made by adrianbuol",
 //                    JLabel.SOUTH_WEST);
 //        }
-        
         private void checkColision() {
 
 //          Serpiente alcanza frutita //getLargo().get(0).
@@ -120,7 +119,7 @@ public class Game {
                 score += 50;
 
             }
-            
+
 //          Serpiente alcanza limite de pantalla
             if (snake.getLargo().get(0).x < 0
                     || snake.getLargo().get(0).x > 39
@@ -160,10 +159,44 @@ public class Game {
 //          Velocidad base snake
             goal = (System.currentTimeMillis() + vel);
 //          Incremento velocidad
-            if (score == 150) {
-                goal = (System.currentTimeMillis() + vel - 10);
-            } else if (score == 200) {
-                goal = (System.currentTimeMillis() + vel - 20);
+            switch (score) {
+                case 150:
+                    goal = (System.currentTimeMillis() + vel - 10);
+                    break;
+                case 200:
+                case 250:
+                case 300:
+                case 350:
+                    goal = (System.currentTimeMillis() + vel - 20);
+                    break;
+                case 400:
+                case 450:
+                case 500:
+                case 550:
+                case 600:
+                    goal = (System.currentTimeMillis() + vel - 30);
+                    break;
+                case 650:
+                case 700:
+                case 750:
+                case 800:
+                    goal = (System.currentTimeMillis() + vel - 40);
+                    break;
+                case 850:
+                case 900:
+                case 950:
+                case 1000:
+                case 1050:
+                    goal = (System.currentTimeMillis() + vel - 50);
+                    break;
+                case 1100:
+                case 1150:
+                case 1200:
+                case 1250:
+                    goal = (System.currentTimeMillis() + vel - 60);
+                    break;
+                default:
+                    break;
             }
             while (System.currentTimeMillis() < goal) {
             }
