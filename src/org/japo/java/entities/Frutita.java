@@ -39,8 +39,8 @@ public class Frutita {
 
 //    Aleatorio de posicion de la "frutita"
     public void nuevaFrutita() {
-        frutita.x = random.nextInt(39);
-        frutita.y = random.nextInt(28) + 1;
+        frutita.x = random.nextInt(30) + 10;
+        frutita.y = random.nextInt(22) + 10;
     }
 
 //    Forma de la "frutita"

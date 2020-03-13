@@ -32,13 +32,16 @@ import org.japo.java.entities.Snake;
  */
 public class Game {
 
-    public static final class JuegoSnakeJava extends JFrame implements KeyListener {
+    public static final class JuegoSnakeJava 
+            extends JFrame implements KeyListener {
+
+        private static final long serialVersionUID = -2260931690081532922L;
 
 //      Variables del tamaño de la ventana
-        private final int windowWidth = 900;
+        private final int windowWidth = 880;
         private final int windowHeight = 700;
         private final int gameWindowW = 800;
-        private final int gameWindowH = 600;
+        private final int gameWindowH = 580;
 
 //      Variables de elementos del juego
         private Snake snake;
@@ -92,11 +95,11 @@ public class Game {
                 g.setColor(Color.PINK);
                 g.fillRect(0, 0, windowWidth, windowHeight);
                 g.setColor(Color.BLACK);
-                g.fillRect(0, 0, gameWindowW, gameWindowH);
+                g.fillRect(40, 80, gameWindowW, gameWindowH);
                 g.setColor(Color.BLUE);
-                g.drawRect(0, 0, 200, 70);
+                g.drawRect(0, 0, 200, 80);
                 g.setColor(Color.DARK_GRAY);
-                g.fillRect(0, 0, 199, 69);
+                g.fillRect(0, 0, 200, 80);
 
                 frutita.dibujoFrutita(g);
                 snake.dibujoSnake(g);
@@ -120,11 +123,11 @@ public class Game {
                 score += 50;
             }
 
-//          Serpiente alcanza limite de pantalla
-            if (snake.getLargo().get(0).x < 0
-                    || snake.getLargo().get(0).x > 39
-                    || snake.getLargo().get(0).y < 1
-                    || snake.getLargo().get(0).y > 29) {
+//          Colision limite pantalla
+            if (snake.getLargo().get(0).x < 2            // 0 ANTES
+                    || snake.getLargo().get(0).x > 41    // 39 ANTES
+                    || snake.getLargo().get(0).y < 3.25  // 1 ANTES
+                    || snake.getLargo().get(0).y > 32) { // 29 ANTES
                 inicioObjetos();
             }
 
@@ -140,7 +143,7 @@ public class Game {
         private void muestroPuntos(Graphics g) {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.BOLD, 24));
-            g.drawString("Score: " + score, 30, 55);
+            g.drawString("Score: " + score, 30, 70);
         }
 
         private void juego() {
