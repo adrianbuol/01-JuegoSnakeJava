@@ -23,7 +23,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import org.japo.java.entities.Frutita;
 import org.japo.java.entities.Snake;
 
@@ -33,13 +32,13 @@ import org.japo.java.entities.Snake;
  */
 public class Game {
 
-    public static class JuegoSnakeJava extends JFrame implements KeyListener {
+    public static final class JuegoSnakeJava extends JFrame implements KeyListener {
 
 //      Variables del tamaño de la ventana
-//        private final int windowWidth = 1280;
-//        private final int windowHeight = 800;
-        private final int windowWidth = 800;
-        private final int windowHeight = 600;
+        private final int windowWidth = 900;
+        private final int windowHeight = 700;
+        private final int gameWindowW = 800;
+        private final int gameWindowH = 600;
 
 //      Variables de elementos del juego
         private Snake snake;
@@ -90,8 +89,14 @@ public class Game {
             try {
                 g = bf.getDrawGraphics();
 
-                g.setColor(Color.BLACK);
+                g.setColor(Color.PINK);
                 g.fillRect(0, 0, windowWidth, windowHeight);
+                g.setColor(Color.BLACK);
+                g.fillRect(0, 0, gameWindowW, gameWindowH);
+                g.setColor(Color.BLUE);
+                g.drawRect(0, 0, 200, 70);
+                g.setColor(Color.DARK_GRAY);
+                g.fillRect(0, 0, 199, 69);
 
                 frutita.dibujoFrutita(g);
                 snake.dibujoSnake(g);
@@ -106,10 +111,6 @@ public class Game {
             Toolkit.getDefaultToolkit().sync();
         }
 
-//        public void bordePantalla() {
-//            JLabel label = new JLabel("Game Made by adrianbuol",
-//                    JLabel.SOUTH_WEST);
-//        }
         private void checkColision() {
 
 //          Serpiente alcanza frutita //getLargo().get(0).
@@ -117,7 +118,6 @@ public class Game {
                 frutita.nuevaFrutita();
                 snake.crecerSnake();
                 score += 50;
-
             }
 
 //          Serpiente alcanza limite de pantalla
@@ -128,20 +128,19 @@ public class Game {
                 inicioObjetos();
             }
 
-//          Deteccion general de colision
+//          Deteccion colision snake consigo misma
             for (int n = 1; n < snake.getLargo().size(); n++) {
                 if (snake.getLargo().get(0).equals(snake.getLargo().get(n))
                         && snake.getLargo().size() > 2) {
                     inicioObjetos();
                 }
-
             }
         }
 
         private void muestroPuntos(Graphics g) {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.BOLD, 24));
-            g.drawString("Score: " + score, 20, 50);
+            g.drawString("Score: " + score, 30, 55);
         }
 
         private void juego() {
@@ -151,55 +150,6 @@ public class Game {
             checkColision();
 //          Llamada metodo para representar por pantalla que ocurre
             dibujoPantalla();
-//          Llamada metodo borde pantalla
-//            bordePantalla();
-        }
-
-        private void sleep() {
-//          Velocidad base snake
-            goal = (System.currentTimeMillis() + vel);
-//          Incremento velocidad
-            switch (score) {
-                case 150:
-                    goal = (System.currentTimeMillis() + vel - 10);
-                    break;
-                case 200:
-                case 250:
-                case 300:
-                case 350:
-                    goal = (System.currentTimeMillis() + vel - 20);
-                    break;
-                case 400:
-                case 450:
-                case 500:
-                case 550:
-                case 600:
-                    goal = (System.currentTimeMillis() + vel - 30);
-                    break;
-                case 650:
-                case 700:
-                case 750:
-                case 800:
-                    goal = (System.currentTimeMillis() + vel - 40);
-                    break;
-                case 850:
-                case 900:
-                case 950:
-                case 1000:
-                case 1050:
-                    goal = (System.currentTimeMillis() + vel - 50);
-                    break;
-                case 1100:
-                case 1150:
-                case 1200:
-                case 1250:
-                    goal = (System.currentTimeMillis() + vel - 60);
-                    break;
-                default:
-                    break;
-            }
-            while (System.currentTimeMillis() < goal) {
-            }
         }
 
         @Override
@@ -236,5 +186,68 @@ public class Game {
 
         }
 
+        public void sleep() {
+
+//          Velocidad base snake
+            goal = (System.currentTimeMillis() + vel);
+
+//          Incremento velocidad
+            switch (score) {
+                case 150:
+                case 200:
+                case 250:
+                case 300:
+                case 350:
+                    goal = (System.currentTimeMillis() + vel - 10);
+                    break;
+                case 400:
+                case 450:
+                case 500:
+                case 550:
+                case 600:
+                case 650:
+                    goal = (System.currentTimeMillis() + vel - 20);
+                    break;
+                case 700:
+                case 750:
+                case 800:
+                case 850:
+                case 900:
+                    goal = (System.currentTimeMillis() + vel - 30);
+                    break;
+                case 950:
+                case 1000:
+                case 1050:
+                case 1100:
+                case 1150:
+                    goal = (System.currentTimeMillis() + vel - 40);
+                    break;
+                case 1200:
+                case 1250:
+                case 1300:
+                case 1350:
+                case 1400:
+                case 1450:
+                case 1500:
+                case 1550:
+                    goal = (System.currentTimeMillis() + vel - 50);
+                    break;
+                case 1600:
+                case 1650:
+                case 1700:
+                case 1750:
+                case 1800:
+                case 1850:
+                case 1900:
+                case 1950:
+                case 2000:
+                    goal = (System.currentTimeMillis() + vel - 60);
+                    break;
+                default:
+                    break;
+            }
+            while (System.currentTimeMillis() < goal) {
+            }
+        }
     }
 }

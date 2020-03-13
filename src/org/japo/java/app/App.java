@@ -16,6 +16,7 @@
 package org.japo.java.app;
 
 import org.japo.java.app.Game.JuegoSnakeJava;
+import org.japo.java.libraries.UtilesPantalla;
 
 
 /**
@@ -23,16 +24,10 @@ import org.japo.java.app.Game.JuegoSnakeJava;
  * @author Adrián Bueno Olmedo <adrian.bueno.alum@iescamp.es>
  */
 public final class App {   
-    
+        
     public App(){
-        System.out.println("Game made by adrianbuol");
-        System.out.printf("%n¡Gracias por jugar!%n");
-        System.out.printf("%nControles:%n");
-        System.out.println("Arriba    - UP");
-        System.out.println("Abajo     - DOWN");
-        System.out.println("Derecha   - RIGHT");
-        System.out.println("Izquierda - LEFT");
-        System.out.println("Para salir del juego pulsa ESC.");
+        System.out.println(UtilesPantalla.TXT_MENSAJE);
+        
     }
     
     public final void launchApp() {
